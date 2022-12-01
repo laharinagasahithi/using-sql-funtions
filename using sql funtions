@@ -1,0 +1,22 @@
+ A function accepts inputs in the form of parameters and returns a value. 
+ SQL Server comes with a set of built-in functions that perform a variety of tasks.
+Of course, you could create a stored procedure to group a set of SQL statements and execute them,however, stored procedures cannot be called within SQL statements.
+
+USE schooldb
+GO
+ 
+CREATE FUNCTION getFormattedDate
+ (
+ @DateValue AS DATETIME
+ )
+RETURNS VARCHAR(MAX)
+AS
+BEGIN
+	RETURN
+	  DATENAME(DW, @DateValue)+ ', '+
+	  DATENAME(DAY, @DateValue)+ ' '+
+	  DATENAME(MONTH, @DateValue) +', '+
+	  DATENAME(YEAR, @DateValue)
+ 
+END
+ 
